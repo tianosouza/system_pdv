@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 8.0.1"
@@ -19,7 +19,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 group :development, :test do
-  gem "dotenv-rails", "~> 3.1", ">= 3.1.4"
+  gem "dotenv-rails", "~> 3.1", ">= 3.1.7"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rspec-rails", "~> 7.0", ">= 7.0.1"
