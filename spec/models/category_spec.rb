@@ -4,7 +4,7 @@ RSpec.describe Category, type: :model do
   before do
     @category = create(:category)
   end
-  
+
   it { should have_many(:products) }
 
   it "is valid atributes with category factory" do
