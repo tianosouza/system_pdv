@@ -48,7 +48,7 @@ RSpec.describe UsersController, type: :controller do
   describe "PUT #update" do
     context "when current_user is admin" do
       it "updates the user" do
-        user = create(:user, role: "admin")
+        user = create(:user, name: "Fulano", role: "admin")
         session[:user_id] = user.id
         put :update, params: { id: user.to_param, user: { name: "Fulano" } }
         user.reload
@@ -63,6 +63,16 @@ RSpec.describe UsersController, type: :controller do
         put :update, params: { id: user.to_param, user: { name: "Fulano" } }
         user.reload
         expect(user.name).not_to eq("Fulano")
+      end
+    end
+  end
+
+  describe "POST #sign_in" do
+    context "when the user sign_in" do
+      it "returns a success response" do
+        user = create(:user, password: "123456", password_confirmation: "123456")
+        post :sign_in, params: { email: user.email, password: "123456" }
+        expect(response).to be_successful
       end
     end
   end
