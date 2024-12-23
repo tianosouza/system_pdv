@@ -24,6 +24,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY . .
+RUN chmod +x ./entrypoint.sh
 
 RUN groupadd --system --gid 1000 system_pdv && \
     useradd system_pdv --uid 1000 --gid 1000 --create-home --shell /bin/bash && \

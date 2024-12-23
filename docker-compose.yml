@@ -11,6 +11,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TERM: xterm-256color
     networks:
       - app-network
 
@@ -19,6 +20,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    entrypoint: ./entrypoint.sh
     command: bundle exec rails s -b 0.0.0.0 -p 3000
     volumes:
       - .:/app
