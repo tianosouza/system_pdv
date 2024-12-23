@@ -71,6 +71,11 @@ RSpec.describe User, type: :model do
       @user.update(role: "cashier")
       expect(@user).to be_valid
     end
+
+    it "is valid with employee role" do
+      @user.update(role: "employee")
+      expect(@user).to be_valid
+    end
   end
 
   context "when creating a new user with invalid role" do
