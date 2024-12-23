@@ -7,4 +7,8 @@ class User < ApplicationRecord
   end
 
   validates :role, inclusion: { in: %w[user admin maneger cashier] }
+
+  def first_name
+    name.split(" ").first
+  end
 end

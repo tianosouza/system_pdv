@@ -79,4 +79,11 @@ RSpec.describe User, type: :model do
       expect(@user).not_to be_valid
     end
   end
+
+  context "when creating a new user with first name" do
+    it "returns the first name" do
+      @user.update(name: "Fulano_1 System Pdv")
+      expect(@user.first_name).to eq("Fulano_1")
+    end
+  end
 end
