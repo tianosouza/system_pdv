@@ -4,6 +4,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def sign_in
+    @user = User.find_by(email: params[:email])
+
+    if @user && @user.authenticate(params[:password])
+      render :index, notice: "Logged in successfully"
+    else
+      render :index, alert: "Invalid email or password"
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end
